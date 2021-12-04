@@ -1,9 +1,11 @@
 import csv
 
+
 def yield_movement():
     with open("input.txt") as fh:
         for line in csv.reader(fh, delimiter=" "):
             yield line[0], int(line[1])
+
 
 def part_1():
     pos_horizontal = 0
@@ -16,6 +18,7 @@ def part_1():
         elif direction == "up":
             pos_depth -= int(quantity)
     return pos_horizontal * pos_depth
+
 
 def part_2():
     pos_horizontal = 0
@@ -30,6 +33,7 @@ def part_2():
         elif direction == "up":
             aim -= int(quantity)
     return pos_horizontal * pos_depth
+
 
 print(f"Part 1 = {part_1()}")
 print(f"Part 2 = {part_2()}")
