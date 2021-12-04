@@ -19,7 +19,6 @@ def part_2():
     rolling_window = []
     prev_rolling_window_sum = None
     for reading in yield_reading():
-        reading = int(reading)
         rolling_window.append(reading)
         if len(rolling_window) == 3:
             rolling_window_sum = sum(rolling_window)

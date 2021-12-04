@@ -10,11 +10,11 @@ def part_1():
     pos_depth = 0
     for direction, quantity in yield_movement():
         if direction == "forward":
-            pos_horizontal += int(quantity)
+            pos_horizontal += quantity
         elif direction == "down":
-            pos_depth += int(quantity)
+            pos_depth += quantity
         elif direction == "up":
-            pos_depth -= int(quantity)
+            pos_depth -= quantity
     return pos_horizontal * pos_depth
 
 
@@ -24,12 +24,12 @@ def part_2():
     aim = 0
     for direction, quantity in yield_movement():
         if direction == "forward":
-            pos_horizontal += int(quantity)
+            pos_horizontal += quantity
             pos_depth += (aim * quantity)
         elif direction == "down":
-            aim += int(quantity)
+            aim += quantity
         elif direction == "up":
-            aim -= int(quantity)
+            aim -= quantity
     return pos_horizontal * pos_depth
 
 
