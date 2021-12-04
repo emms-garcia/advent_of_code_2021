@@ -1,13 +1,9 @@
 import csv
 
-
-
 def yield_movement():
-     with open("input.txt") as fh:
-        for line in csv.reader(fh, delimiter =" "):
+    with open("input.txt") as fh:
+        for line in csv.reader(fh, delimiter=" "):
             yield line[0], int(line[1])
-
-
 
 def part_1():
     pos_horizontal = 0
