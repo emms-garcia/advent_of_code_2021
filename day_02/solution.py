@@ -1,10 +1,8 @@
-import csv
-
-
 def yield_movement():
     with open("input.txt") as fh:
-        for line in csv.reader(fh, delimiter=" "):
-            yield line[0], int(line[1])
+        for line in fh:
+            [direction, quantity] = line.split()
+            yield direction, int(quantity)
 
 
 def part_1():

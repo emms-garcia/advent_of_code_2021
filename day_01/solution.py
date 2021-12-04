@@ -1,10 +1,7 @@
-import csv
-
-
 def yield_reading():
-    with open("input.csv") as f:
-        for (reading, ) in csv.reader(f):
-            yield int(reading)
+    with open("input.txt") as f:
+        for line in f:
+            yield int(line)
 
 
 def part_1():
