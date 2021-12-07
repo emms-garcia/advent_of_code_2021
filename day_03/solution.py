@@ -1,3 +1,6 @@
+from collections import defaultdict
+
+
 def yield_reading():
     with open("input.txt") as fh:
         for line in fh:

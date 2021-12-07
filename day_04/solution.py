@@ -1,3 +1,6 @@
+from collections import defaultdict
+
+
 def parse_input():
     with open("input.txt") as fh:
         data = fh.read().split("\n\n")
@@ -12,13 +15,12 @@ def parse_input():
 
 
 def check_board_won(board, board_matches):
-    col_counters = {}
+    col_counters = defaultdict(int)
     sun_unmatched = 0
     won = False
     for row_idx in range(len(board)):
         row_counter = 0
         for col_idx in range(len(board[row_idx])):
-            col_counters.setdefault(col_idx, 0)
             if board_matches.get(row_idx, {}).get(col_idx):
                 col_counters[col_idx] += 1
                 row_counter += 1
@@ -32,19 +34,17 @@ def check_board_won(board, board_matches):
 
 
 def yield_winning_board_and_score(numbers, boards):
-    board_matches = {}
+    board_matches = defaultdict(lambda: defaultdict(lambda: defaultdict(bool)))
     for number in numbers:
         for board_idx, board in enumerate(boards):
-            board_matches.setdefault(board_idx, {})
             for row_idx, row in enumerate(board):
-                board_matches[board_idx].setdefault(row_idx, {})
                 for col_idx, board_number in enumerate(row):
-                    board_matches[board_idx][row_idx].setdefault(col_idx, False)
                     if board_number == number:
                         board_matches[board_idx][row_idx][col_idx] = True
             won, sum_unmarked_numbers = check_board_won(board, board_matches[board_idx])
             if won:
                 yield board_idx, sum_unmarked_numbers * number
+
 
 def part_1(numbers, boards):
     _, score = next(yield_winning_board_and_score(numbers, boards))
